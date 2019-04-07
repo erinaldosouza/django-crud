@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<br />
+    {% for pearson in pearsons %}
+        <p> {{ pearson }} </p>
+    {% endfor %}
+<br />
+
+<a href="{% url 'url_new' %}">New Pearson</a>
+
+</body>
+</html>
