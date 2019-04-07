@@ -6,9 +6,14 @@
 </head>
 <body>
 <br />
-    {% for pearson in pearsons %}
-        <p> {{ pearson }} </p>
-    {% endfor %}
+    <h3>List</h3>
+    <ul>
+        {% for pearson in pearsons %}
+          <li>
+              <a href="{% url 'url_update' pearson.pk %}"> <p> {{ pearson }} </p> </a>
+          </li>
+        {% endfor %}
+    </ul>
 <br />
 
 <a href="{% url 'url_new' %}">New Pearson</a>

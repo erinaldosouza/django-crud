@@ -16,14 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from pearson.views import pearson_home, new, update, delete, all
+from pearson.views import pearson_home, new, update, delete
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('pearson/', pearson_home),
-    path('pearson/all/', all),
+    path('pearson/', pearson_home, name='pearsons'),
     path('pearson/new/', new, name="url_new"),
-    path('pearson/update/', update),
-    path('pearson/delete/', delete),
-
+    path('pearson/update/<int:pk>/', update, name="url_update"),
+    path('pearson/delete/<int:pk>/', delete, name="url_delete"),
 ]

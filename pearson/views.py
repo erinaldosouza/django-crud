@@ -10,32 +10,31 @@ def pearson_home(request):
     return render(request, 'pearson/pearson_home.html', data)
 
 
-def pearson_form(request):
-    form = PearsonForm(request.POST or None)
-    data = {"form": form}
-
-    return render(request, 'pearson/form.html', data)
-
-
 def new(request):
     form = PearsonForm(request.POST or None)
 
     if form.is_valid():
         form.save()
-        return pearson_home(request)
+        return redirect('pearsons')
 
     data = {"form": form}
     return render(request, 'pearson/form.html', data)
 
 
-def update(request):
-    print('b')
+def update(request, pk):
+    pearson = Pearson.objects.get(pk=pk)
+    form = PearsonForm(request.POST or None, instance=pearson)
+
+    if form.is_valid():
+        form.save()
+        return redirect('pearsons')
+
+    data = {"form": form, "pearson": pearson}
+    return render(request, 'pearson/form.html', data)
 
 
-def delete(request):
-    print('c')
+def delete(request, pk):
+    pearson = Pearson.objects.get(pk=pk)
+    pearson.delete()
+    return redirect('pearsons')
 
-
-def all(request):
-    data = {"pearsons": Pearson.objects.all()}
-    return render(request, 'pearson/pearson_home.html', data )
