@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+</head>
+<body>
+<br />
+    <h3>List</h3>
+    <ul>
+        {% if pearsons %}
+            {% for pearson in pearsons %}
+              <li>
+                  <a href="{% url 'url_update' pearson.pk %}"> <p> {{ pearson }} </p> </a>
+              </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+<br />
+
+<a href="{% url 'url_new' %}">New Pearson</a>
+
+</body>
+</html>

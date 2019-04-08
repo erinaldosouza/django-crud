@@ -4,10 +4,10 @@ from pearson.form import PearsonForm
 from pearson.models import Pearson
 
 
-def pearson_home(request):
+def home(request):
     data = {"title": "Pearson Operations",
             "pearsons": Pearson.objects.all()}
-    return render(request, 'pearson/pearson_home.html', data)
+    return render(request, 'pearson/home.html', data)
 
 
 def new(request):
